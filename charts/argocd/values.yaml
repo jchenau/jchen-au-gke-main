@@ -1,0 +1,5 @@
+argo-cd:
+  applicationSet:
+    enabled: false
+  notifications:
+    enabled: false
