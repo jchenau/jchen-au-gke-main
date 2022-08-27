@@ -1,0 +1,8 @@
+ingress-nginx:
+  controller:
+    electionID: ingress-nginx-public
+    ingressClassResource:
+      enabled: true
+      name: nginx-public
+      default: false
+      controllerValue: k8s.io/ingress-nginx-public

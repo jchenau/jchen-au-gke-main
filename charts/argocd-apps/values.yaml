@@ -1,0 +1,4 @@
+source:
+  repoURL: https://github.com/jchenau/jchen-au-gke-main
+apps:
+  - name: ingress-nginx-public

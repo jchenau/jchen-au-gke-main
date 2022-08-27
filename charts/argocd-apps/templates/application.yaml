@@ -1,0 +1,48 @@
+{{- range .Values.apps }}
+{{- if ne (.enabled | quote) "false" }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+spec:
+  destination:
+    namespace: {{ .namespace | default .name }}
+    server: https://kubernetes.default.svc
+  project: {{ .project | default "default" }}
+  source:
+    {{- if .path }}
+    path: {{ .path }}
+    {{- else }}
+    path: "charts/{{ .name }}"
+    {{- end }}
+
+    {{- if .source }}
+    repoURL: {{ .source }}
+    {{- else }}
+    repoURL: {{ $.Values.source.repoURL }}
+    {{- end }}
+
+    targetRevision: {{ .branch | default "HEAD" }}
+
+    helm:
+      valueFiles:
+      {{- if .valueFiles }}
+        {{- range .valueFiles }}
+        - {{ . | quote }}
+        {{- end }}
+      {{- end }}
+      {{- if .skipCrds }}
+      skipCrds: {{ .skipCrds }}
+      {{- end }}
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+  {{- with .ignoreDifferences }}
+  ignoreDifferences:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}
