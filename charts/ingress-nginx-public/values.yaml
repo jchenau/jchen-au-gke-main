@@ -6,3 +6,5 @@ ingress-nginx:
       name: ingress-nginx-public
       default: false
       controllerValue: k8s.io/ingress-nginx-public
+    extraArgs:
+      default-ssl-certificate: "tls-certificates/wildcard-jchen-au"
