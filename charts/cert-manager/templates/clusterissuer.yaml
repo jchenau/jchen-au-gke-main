@@ -11,7 +11,7 @@ spec:
     solvers:
       - dns01:
           cloudDNS:
-            project: kubernetes-8241
+            project: network-1050
         selector:
           dnsZones:
             - "jchen.au"
@@ -29,7 +29,7 @@ spec:
     solvers:
       - dns01:
           cloudDNS:
-            project: kubernetes-8241
+            project: network-1050
         selector:
           dnsZones:
             - "jchen.au"
