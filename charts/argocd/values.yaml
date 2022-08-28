@@ -1,10 +1,32 @@
 argo-cd:
   server:
+    extraArgs:
+      - --insecure
     ingress:
       enabled: true
       ingressClassName: ingress-nginx-public
       hosts:
         - argocd.jchen.au
+    config:
+      url: https://argocd.jchen.au
+      admin.enabled: "false"
+      oidc.config: |
+        name: azure
+        issuer: https://login.microsoftonline.com/f4afa40c-a163-4116-a3d9-2ea45bb358fa/v2.0
+        clientID: 8e1bd59d-f8e8-4a3b-bfcd-bbde854937c4
+        clientSecret: $oidc.azure.clientSecret
+        requestedIDTokenClaims:
+          groups:
+            essential: true
+        requestedScopes:
+          - openid
+          - profile
+          - email
+    rbacConfig:
+      policy.default: role:readonly
+      policy.csv: |
+        g, "3be9c192-2c4e-48b4-b5f9-75eb473b4c4b", role:admin
+      scopes: '[groups, email]'
   applicationSet:
     enabled: false
   notifications:
