@@ -5,3 +5,4 @@ apps:
     autoSync: true
   ingress-nginx-public: {}
   cert-manager: {}
+  external-dns: {}
