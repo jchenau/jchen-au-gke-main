@@ -1,4 +1,10 @@
 argo-cd:
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: ingress-nginx-public
+      hosts:
+        - argocd.jchen.au
   applicationSet:
     enabled: false
   notifications:
