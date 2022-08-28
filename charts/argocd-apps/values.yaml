@@ -7,4 +7,4 @@ apps:
   ingress-nginx-public: {}
   cert-manager: {}
   external-dns: {}
-  tls-certificates: {}
+  tls-certificate: {}
