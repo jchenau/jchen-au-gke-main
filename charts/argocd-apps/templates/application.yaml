@@ -1,46 +1,46 @@
-{{- range .Values.apps }}
-{{- if ne (.enabled | quote) "false" }}
+{{- range $name, $config := .Values.apps }}
+{{- if ne ($config.enabled | quote) "false" }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .name }}
+  name: {{ $name }}
 spec:
   destination:
-    namespace: {{ .namespace | default .name }}
+    namespace: {{ $config.namespace | default $name }}
     server: https://kubernetes.default.svc
   project: {{ .project | default "default" }}
   source:
-    {{- if .path }}
-    path: {{ .path }}
+    {{- if $config.path }}
+    path: {{ $config.path }}
     {{- else }}
-    path: "charts/{{ .name }}"
+    path: "charts/{{ $name }}"
     {{- end }}
 
-    {{- if .source }}
-    repoURL: {{ .source }}
+    {{- if $config.repoURL }}
+    repoURL: {{ $config.repoURL }}
     {{- else }}
-    repoURL: {{ $.Values.source.repoURL }}
+    repoURL: {{ $.Values.global.repoURL }}
     {{- end }}
 
-    targetRevision: {{ .branch | default "HEAD" }}
+    targetRevision: {{ $config.targetRevision | default "HEAD" }}
 
     helm:
       valueFiles:
-      {{- if .valueFiles }}
-        {{- range .valueFiles }}
+      {{- if $config.valueFiles }}
+        {{- range $config.valueFiles }}
         - {{ . | quote }}
         {{- end }}
       {{- end }}
-      {{- if .skipCrds }}
-      skipCrds: {{ .skipCrds }}
+      {{- if $config.skipCrds }}
+      skipCrds: {{ $config.skipCrds }}
       {{- end }}
 
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
 
-  {{- with .ignoreDifferences }}
+  {{- with $config.ignoreDifferences }}
   ignoreDifferences:
     {{- toYaml . | nindent 4 }}
   {{- end }}
