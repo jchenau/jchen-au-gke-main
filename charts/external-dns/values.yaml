@@ -2,3 +2,8 @@ external-dns:
   serviceAccount:
     annotations:
       iam.gke.io/gcp-service-account: external-dns@kubernetes-8241.iam.gserviceaccount.com
+  provider: google
+  google:
+    project: network-1050
+    zoneVisibility: public
+  txtOwnerId: jchen-au-gke-main-external-dns
