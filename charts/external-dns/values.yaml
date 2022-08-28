@@ -7,3 +7,5 @@ external-dns:
     project: network-1050
     zoneVisibility: public
   txtOwnerId: jchen-au-gke-main-external-dns
+  domainFilters:
+    - jchen.au
