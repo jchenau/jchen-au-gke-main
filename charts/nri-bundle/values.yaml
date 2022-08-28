@@ -3,5 +3,17 @@ nri-bundle:
     cluster: jchen-au-gke-main
     customSecretName: newrelic-api-keys
     customSecretLicenseKey: license-key
+  newrelic-infrastructure:
+    kubelet:
+      resources:
+        requests:
+          cpu: 0
+  nri-metadata-injection:
+    resources:
+      requests:
+        cpu: 0
   kube-state-metrics:
     enabled: true
+    resources:
+      requests:
+        cpu: 0
