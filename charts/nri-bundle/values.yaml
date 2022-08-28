@@ -8,12 +8,13 @@ nri-bundle:
       resources:
         requests:
           cpu: 0
+    ksm:
+      resources:
+        requests:
+          cpu: 0
   nri-metadata-injection:
     resources:
       requests:
         cpu: 0
   kube-state-metrics:
     enabled: true
-    resources:
-      requests:
-        cpu: 0
