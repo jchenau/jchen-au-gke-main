@@ -3,3 +3,5 @@ cert-manager:
   serviceAccount:
     annotations:
       iam.gke.io/gcp-service-account: cert-manager@kubernetes-8241.iam.gserviceaccount.com
+  extraArgs:
+    - --issuer-ambient-credentials=true
