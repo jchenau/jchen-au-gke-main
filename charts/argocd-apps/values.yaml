@@ -8,3 +8,4 @@ apps:
   cert-manager: {}
   external-dns: {}
   tls-certificate: {}
+  nri-bundle: {}

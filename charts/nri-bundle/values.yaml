@@ -1,0 +1,7 @@
+nri-bundle:
+  global:
+    cluster: jchen-au-gke-main
+    customSecretName: newrelic-api-keys
+    customSecretLicenseKey: license-key
+  kube-state-metrics:
+    enabled: true
