@@ -1,1 +1,4 @@
-external-dns: {}
+external-dns:
+  serviceAccount:
+    annotations:
+      iam.gke.io/gcp-service-account: external-dns@kubernetes-8241.iam.gserviceaccount.com"
