@@ -41,6 +41,7 @@ spec:
     {{- if $config.autoSync }}
     automated:
       prune: true
+      selfHeal: true
     {{- end }}
     syncOptions:
       - CreateNamespace=true
