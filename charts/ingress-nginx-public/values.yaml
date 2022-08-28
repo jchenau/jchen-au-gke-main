@@ -8,3 +8,6 @@ ingress-nginx:
       controllerValue: k8s.io/ingress-nginx-public
     extraArgs:
       default-ssl-certificate: "tls-certificate/wildcard-jchen-au"
+    resources:
+      requests:
+        cpu: 0
