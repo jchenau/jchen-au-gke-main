@@ -26,6 +26,7 @@ spec:
     targetRevision: {{ $config.targetRevision | default "HEAD" }}
 
     helm:
+      version: v3
       {{- if $config.valueFiles }}
       valueFiles:
         {{- range $config.valueFiles }}
