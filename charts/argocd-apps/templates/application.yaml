@@ -26,8 +26,8 @@ spec:
     targetRevision: {{ $config.targetRevision | default "HEAD" }}
 
     helm:
-      valueFiles:
       {{- if $config.valueFiles }}
+      valueFiles:
         {{- range $config.valueFiles }}
         - {{ . | quote }}
         {{- end }}
@@ -37,6 +37,10 @@ spec:
       {{- end }}
 
   syncPolicy:
+    {{- if $config.autoSync }}
+    automated:
+      prune: true
+    {{- end }}
     syncOptions:
       - CreateNamespace=true
 

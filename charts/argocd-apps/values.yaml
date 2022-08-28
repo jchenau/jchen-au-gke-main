@@ -1,5 +1,7 @@
 global:
   repoURL: https://github.com/jchenau/jchen-au-gke-main
 apps:
+  argocd-apps:
+    autoSync: true
   ingress-nginx-public: {}
   cert-manager: {}
