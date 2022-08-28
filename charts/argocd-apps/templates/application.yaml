@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: {{ $config.namespace | default $name }}
     server: https://kubernetes.default.svc
-  project: {{ .project | default "default" }}
+  project: {{ $config.project | default "default" }}
   source:
     {{- if $config.path }}
     path: {{ $config.path }}
