@@ -5,6 +5,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $name }}
+  namespace: {{ $.Values.global.namespace }}
 spec:
   destination:
     namespace: {{ $config.namespace | default $name }}
