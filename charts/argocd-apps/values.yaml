@@ -9,3 +9,4 @@ apps:
   external-dns: {}
   tls-certificate: {}
   nri-bundle: {}
+  honeycomb: {}
