@@ -1,6 +1,0 @@
-honeycomb:
-  honeycomb:
-    existingSecret: honeycomb
-
-  metics:
-    clusterName: jchen-au-gke-main
