@@ -2,8 +2,7 @@ global:
   repoURL: https://github.com/jchenau/jchen-au-gke-main
   namespace: argocd
 apps:
-  argocd-apps:
-    autoSync: true
+  argocd-apps: {}
   ingress-nginx-public: {}
   cert-manager: {}
   external-dns: {}

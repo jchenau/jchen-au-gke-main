@@ -39,7 +39,7 @@ spec:
       {{- end }}
 
   syncPolicy:
-    {{- if $config.autoSync }}
+    {{- if or $config.autoSync (not (hasKey $config "autoSync")) }}
     automated:
       prune: true
       selfHeal: true
